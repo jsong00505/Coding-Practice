@@ -28,22 +28,40 @@ public class Main {
 	 * @return count
 	 **/
 	static long bruteForce(long min, long max) {
-		// TODO : need to data type casting long to int
-		long count = max - min + 1;
+		long count = 0;
 
 		HashMap<Long, Boolean> squaredMap = new HashMap<>();
 		for(long i = min; i <= max; i++) {
-			squaredMap.put(i, false);
+			squaredMap.put(i, true);
 		}
 
-		for(long i = min; i <= max; i++) {
-			if((Math.sqrt(i) == Math.round(Math.sqrt(i))) && i != 1 && !squaredMap.get(i)) {
-				for(long j = 1; i * j <= max; j++) {
-					squaredMap.put(i * j, true);
-					count--;
+		// start from squared of 2 until squared number is not over max
+		for(long i = 2; i * i <= max; i++) {
+			long powerI = i * i;
+			long start = 0;
+
+			if(min % powerI == 0) {
+				start = (min / powerI) * powerI;
+			} else if(((min / powerI) + 1) * powerI <= max){
+				start = ((min / powerI) + 1) * powerI;
+			} else {
+				continue;
+			}
+
+			if(squaredMap.get(start)) {
+				for(long j = start; j <= max; j += powerI) {
+					squaredMap.put(j, false);
 				}
 			}
 		}
+
+		for(long index: squaredMap.keySet()) {
+
+			if(squaredMap.get(index)) {
+				count++;
+			}
+		}
+
 		return count;
 	}
 	public static void main(String[] args) {
@@ -55,8 +73,7 @@ public class Main {
 			long max = in.nextLong();
 
 			// constraints
-			assert(min >= 1 && min <= Math.pow(10, 12));
-			assert(max >= min && max <= (min + Math.pow(10, 6)));
+			assert(min >= 1 && min <= Math.pow(10, 12) && max >= min && max <= (min + Math.pow(10, 6)));
 
 			out.println(bruteForce(min, max));
 		} catch(Exception e) {
