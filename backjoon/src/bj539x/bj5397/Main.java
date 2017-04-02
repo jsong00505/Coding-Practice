@@ -15,10 +15,17 @@ import java.util.Scanner;
  * challenge	: Key Logger
  */
 public class Main {
+	// commands
 	static char RIGHT_MOVE = '>';
 	static char LEFT_MOVE = '<';
 	static char REMOVE = '-';
 
+	/**
+	 * Method Name: findPassword
+	 *
+	 * @param l a invalid password including commands
+	 * @return a valid password
+	 */
 	static String findPassword(String l) {
 		LinkedList<Character> linkedList = new LinkedList<>();
 		StringBuilder result = new StringBuilder();

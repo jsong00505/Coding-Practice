@@ -15,6 +15,12 @@ import java.util.Scanner;
  * challenge	: The Number of Factorial 0
  */
 public class Main {
+	/**
+	 * Method Name: bruteForce
+	 *
+	 * @param n
+	 * @return a number of zeros of n!
+	 */
 	static int bruteForce(int n) {
 		// init how many twos and fives are in prime factorization
 		HashMap<Integer, Integer> zeroMap = new HashMap<>();

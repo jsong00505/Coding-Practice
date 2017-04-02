@@ -14,6 +14,17 @@ import java.util.Scanner;
  * challenge	: Tower
  */
 public class Main {
+	/**
+	 *
+	 * Method Name: bruteForce
+	 *
+	 * implemented by brute-force. so need to optimize later even if it passed.
+	 *
+	 * @param n the number of towers
+	 * @param heightOfTowers an array of the height of towers
+	 * @param received an array of the information about towers received light from other towers
+	 * @return the updated array of 'received'
+	 */
 	static int[] bruteForce(int n, int[] heightOfTowers, int[] received) {
 		for(int i = n - 1; i >= 0; i--) {
 			int height = heightOfTowers[i];
@@ -53,7 +64,7 @@ public class Main {
 			for(int i: recevied) {
 				out.print(i + " ");
 			}
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

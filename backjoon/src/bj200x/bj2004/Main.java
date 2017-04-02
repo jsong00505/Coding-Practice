@@ -27,7 +27,7 @@ public class Main {
 	 *
 	 * @param n
 	 * @param m
-	 * @return
+	 * @return a number of zeros by result n combinations of m
 	 */
 	static int euclidFirstTheorem(int n, int m) {
 		int two = 0;

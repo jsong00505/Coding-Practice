@@ -14,7 +14,14 @@ import java.util.Scanner;
  * challenge	: Power of N
  */
 public class Main {
-	static long bruteForce(long n) {
+	/**
+	 * Method Name: findNthNumbers
+	 *
+	 *
+	 * @param n a 'n'th position
+	 * @return a number at 'n'th position
+	 */
+	static long findNthNumbers(long n) {
 		long result = 0;
 
 		// the flag checking if the element is the last order
@@ -44,7 +51,7 @@ public class Main {
 			// validation
 			assert(n >= 1 && n <= (5 * Math.pow(10, 11)));
 
-			out.println(bruteForce(n));
+			out.println(findNthNumbers(n));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
