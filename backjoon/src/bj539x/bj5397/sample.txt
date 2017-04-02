@@ -1,0 +1,12 @@
+case #1
+
+4
+<<BP<A>>Cd-
+>>>-d<-
+>>>-d>-
+ThIsIsS3Cr3t
+
+output:
+
+BAPC
+ThIsIsS3Cr3t
