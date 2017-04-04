@@ -1,4 +1,4 @@
-package chapter1.basic.one;
+package chapter1.basic.example1;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -15,15 +15,17 @@ import java.util.Scanner;
  */
 public class Solution {
 	/**
-	 * Method Name: isPossible
+	 * Method Name: isPossibleByBruteForce
 	 *
+	 * TODO optimize below time complexity
+	 * @time-complexty n^4
 	 *
 	 * @param n
 	 * @param m
 	 * @param k
 	 * @return
 	 */
-	static String isPossible(int n, int m, int[] k) {
+	static String isPossibleByBruteForce(int n, int m, int[] k) {
 		// init result
 		String result = "No";
 
@@ -64,7 +66,7 @@ public class Solution {
 			}
 
 			// print
-			out.println(isPossible(n, m, k));
+			out.println(isPossibleByBruteForce(n, m, k));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
