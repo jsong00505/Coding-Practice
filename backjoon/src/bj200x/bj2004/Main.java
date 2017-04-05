@@ -50,8 +50,10 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    try (Scanner in = new Scanner(System.in);
-        PrintWriter out = new PrintWriter(System.out); ) {
+    try (
+      Scanner in = new Scanner(System.in);
+      PrintWriter out = new PrintWriter(System.out);
+    ) {
       int n = in.nextInt();
       int m = in.nextInt();
 
