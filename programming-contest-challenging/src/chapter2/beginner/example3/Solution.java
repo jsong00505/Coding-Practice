@@ -17,8 +17,10 @@ import java.util.Stack;
  */
 public class Solution {
   public static void main(String[] args) {
-    try (Scanner in = new Scanner(System.in);
-        PrintWriter out = new PrintWriter(System.out); ) {
+    try (
+      Scanner in = new Scanner(System.in);
+      PrintWriter out = new PrintWriter(System.out);
+    ) {
       Stack<Integer> stack = new Stack<>(); // {}
       stack.push(1); // {1}
       stack.push(2); // {1, 2}
