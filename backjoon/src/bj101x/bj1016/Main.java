@@ -38,7 +38,7 @@ public class Main {
     // start from squared of 2 until squared number is not over max
     for (long i = 2; i * i <= max; i++) {
       long powerI = i * i;
-      long start = 0;
+      long start;
 
       if (min % powerI == 0) {
         start = (min / powerI) * powerI;
@@ -48,15 +48,14 @@ public class Main {
         continue;
       }
 
-      if (squaredMap.get(start)) {
-        for (long j = start; j <= max; j += powerI) {
-          squaredMap.put(j, false);
-        }
+
+      for (long j = start; j <= max; j += powerI) {
+        squaredMap.put(j, false);
       }
-    }
+
+    } // for
 
     for (long index : squaredMap.keySet()) {
-
       if (squaredMap.get(index)) {
         count++;
       }
@@ -66,8 +65,10 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    try (Scanner in = new Scanner(System.in);
-        PrintWriter out = new PrintWriter(System.out); ) {
+    try (
+      Scanner in = new Scanner(System.in);
+      PrintWriter out = new PrintWriter(System.out);
+    ) {
       long min = in.nextLong();
       long max = in.nextLong();
 
