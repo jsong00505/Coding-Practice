@@ -7,18 +7,15 @@ import java.util.Scanner;
 /**
  * Created by jsong on 02/04/2017.
  *
- * @hackerrank  https://www.hackerrank.com/jsong00505
- * @backjoon    https://www.acmicpc.net/user/jsong00505
- * @github      https://github.com/jsong00505
- * @linkedin    https://www.linkedin.com/in/junesongskorea/
- * @email       jsong00505@gmail.com
- *
- * @challenge   String Explosion
- *
+ * @hackerrank https://www.hackerrank.com/jsong00505
+ * @backjoon https://www.acmicpc.net/user/jsong00505
+ * @github https://github.com/jsong00505
+ * @linkedin https://www.linkedin.com/in/junesongskorea/
+ * @email jsong00505@gmail.com
+ * @challenge String Explosion
  */
 public class Main {
   /**
-   *
    * @param sentence
    * @param bomb
    * @return
@@ -43,7 +40,7 @@ public class Main {
 
         // if found a bomb string, just pop out
         if (bombFlag) {
-          for(int j = 0; j < bomb.length() - 1; j++) {
+          for (int j = 0; j < bomb.length() - 1; j++) {
             stack.removeLast();
           }
         } else {
@@ -57,24 +54,21 @@ public class Main {
     } // for
 
     // make a result string
-    for(char c: stack) {
+    for (char c : stack) {
       result.append(c);
     }
 
     // if result is empty, result will be 'FRULA'
-    if(result.toString().equals("")) {
+    if (result.toString().equals("")) {
       result.append("FRULA");
     }
 
     return result.toString();
   }
 
-
   public static void main(String[] args) {
-    try (
-      Scanner in = new Scanner(System.in);
-      PrintWriter out = new PrintWriter(System.out);
-     ) {
+    try (Scanner in = new Scanner(System.in);
+        PrintWriter out = new PrintWriter(System.out); ) {
       String sentence = in.nextLine();
       String bomb = in.nextLine();
 
