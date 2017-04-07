@@ -17,40 +17,51 @@ import java.util.Scanner;
  *
  */
 public class Main {
+  /**
+   *
+   * @param sentence
+   * @param bomb
+   * @return
+   */
   static String launchBomb(String sentence, String bomb) {
     LinkedList<Character> stack = new LinkedList<>();
+    StringBuilder result = new StringBuilder("");
     int bombLastIndex = bomb.length() - 1;
     boolean bombFlag = true;
-    StringBuilder result = new StringBuilder("");
 
     for (int i = 0; i < sentence.length(); i++) {
+      // get the size of the stack
       int stackSize = stack.size();
       if (sentence.charAt(i) == bomb.charAt(bombLastIndex) && stackSize >= bomb.length() - 1) {
         for (int j = 0; j < bomb.length() - 1; j++) {
+          // if it is not same between, just escape the loop
           if (stack.get(stackSize - bombLastIndex + j) != bomb.charAt(j)) {
             bombFlag = false;
             continue;
           }
-        }
+        } // for
 
+        // if found a bomb string, just pop out
         if (bombFlag) {
           for(int j = 0; j < bomb.length() - 1; j++) {
             stack.removeLast();
           }
         } else {
           stack.add(sentence.charAt(i));
-        }
+        } // if-else
 
         bombFlag = true;
       } else {
         stack.add(sentence.charAt(i));
-      }
+      } // if-else
     } // for
 
+    // make a result string
     for(char c: stack) {
       result.append(c);
     }
 
+    // if result is empty, result will be 'FRULA'
     if(result.toString().equals("")) {
       result.append("FRULA");
     }
