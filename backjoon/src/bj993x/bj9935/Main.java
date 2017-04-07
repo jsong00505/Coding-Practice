@@ -14,8 +14,51 @@ import java.util.Scanner;
  * @email       jsong00505@gmail.com
  *
  * @challenge   String Explosion
+ *
  */
 public class Main {
+  static String launchBomb(String sentence, String bomb) {
+    LinkedList<Character> stack = new LinkedList<>();
+    int bombLastIndex = bomb.length() - 1;
+    boolean bombFlag = true;
+    StringBuilder result = new StringBuilder("");
+
+    for (int i = 0; i < sentence.length(); i++) {
+      int stackSize = stack.size();
+      if (sentence.charAt(i) == bomb.charAt(bombLastIndex) && stackSize >= bomb.length() - 1) {
+        for (int j = 0; j < bomb.length() - 1; j++) {
+          if (stack.get(stackSize - bombLastIndex + j) != bomb.charAt(j)) {
+            bombFlag = false;
+            continue;
+          }
+        }
+
+        if (bombFlag) {
+          for(int j = 0; j < bomb.length() - 1; j++) {
+            stack.removeLast();
+          }
+        } else {
+          stack.add(sentence.charAt(i));
+        }
+
+        bombFlag = true;
+      } else {
+        stack.add(sentence.charAt(i));
+      }
+    } // for
+
+    for(char c: stack) {
+      result.append(c);
+    }
+
+    if(result.toString().equals("")) {
+      result.append("FRULA");
+    }
+
+    return result.toString();
+  }
+
+
   public static void main(String[] args) {
     try (
       Scanner in = new Scanner(System.in);
@@ -28,7 +71,7 @@ public class Main {
       assert (bomb.length() >= 1 && bomb.length() <= 36);
 
       //out.println(launchBombByReplace(sentence, bomb));
-      out.println(launchBombByReplace2(sentence, bomb));
+      out.println(launchBomb(sentence, bomb));
     } catch (Exception e) {
       e.printStackTrace();
     }

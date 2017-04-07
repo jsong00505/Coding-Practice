@@ -3,8 +3,12 @@ case #1
 mirkovC4nizCC44
 C4
 
+output: mirkovniz
+
 ========
 case #2
 
 mirkovC4nizCC44AC
 C4
+
+output: mirkovnizAC
