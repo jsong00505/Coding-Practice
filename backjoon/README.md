@@ -17,6 +17,7 @@
 |  1016 | [Squared nn Digit](https://www.acmicpc.net/problem/1016)                    | [Main.java](src/bj101x/bj1016/Main.java?ts=4)   | 13460 KB | 1192 MS |        |
 |  1676 | [The Number of Factorial 0](https://www.acmicpc.net/problem/1676)           | [Main.java](src/bj167x/bj1676/Main.java?ts=4)   |  8776 KB |  100 MS |        |
 |  1740 | [Power of N](https://www.acmicpc.net/problem/1740)                          | [Main.java](src/bj174x/bj1740/Main.java?ts=4)   |  8684 KB |   96 MS |        |
+|  1966 | [Printer Queue](https://www.acmicpc.net/problem/1966)                       | [Main.java](src/bj196x/bj1966/Main.java?ts=4)   | 11596 KB |  184 MS |        |
 |  2004 | [The Number of Zeros in Combinations](https://www.acmicpc.net/problem/2004) | [Main.java](src/bj200x/bj2004/Main.java?ts=4)   |  9492 KB |  100 MS |        |
 |  2178 | [Maze](https://www.acmicpc.net/problem/2178)                                | [Main.java](src/bj217x/bj2178/Main.java?ts=4)   |  9788 KB |  124 MS |        |
 |  2493 | [Tower](https://www.acmicpc.net/problem/2493)                               | [Main.java](src/bj249x/bj2493/Main.java?ts=4)   | 16456 KB | 1928 MS |        |
