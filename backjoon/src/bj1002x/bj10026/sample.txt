@@ -1,0 +1,12 @@
+case #1
+
+Input:
+5
+RRRBB
+GGBBB
+BBBRR
+BBRRR
+RRRRR
+
+Output:
+4 3
