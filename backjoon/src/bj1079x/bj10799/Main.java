@@ -7,13 +7,12 @@ import java.util.Scanner;
 /**
  * Created by jsong on 04/04/2017.
  *
- * @hackerrank  https://www.hackerrank.com/jsong00505
- * @backjoon    https://www.acmicpc.net/user/jsong00505
- * @github      https://github.com/jsong00505
- * @linkedin    https://www.linkedin.com/in/junesongskorea/
- * @email       jsong00505@gmail.com
- *
- * @challenge   A Steel Rod
+ * @hackerrank https://www.hackerrank.com/jsong00505
+ * @backjoon https://www.acmicpc.net/user/jsong00505
+ * @github https://github.com/jsong00505
+ * @linkedin https://www.linkedin.com/in/junesongskorea/
+ * @email jsong00505@gmail.com
+ * @challenge A Steel Rod
  */
 public class Main {
   static char OPEN_BRACKET = '(';
@@ -21,7 +20,6 @@ public class Main {
   static char INIT_CHAR = '0';
 
   /**
-   *
    * Method Name: getNumberOfPiecesRuntimeError
    *
    * <p>this method occurs runtime error in the site. so have to figure it out in soon.
@@ -63,7 +61,6 @@ public class Main {
   }
 
   /**
-   *
    * Method Name: getNumberOfPiecesController
    *
    * <p>before calculate the number, pass the substrings to processing method in main query
@@ -85,7 +82,7 @@ public class Main {
         open--;
       }
 
-      if (open == 0){
+      if (open == 0) {
         result += getNumberOfPiecesRuntimeError(query.substring(start, i + 1));
         start = i + 1;
       }
@@ -115,7 +112,7 @@ public class Main {
           for (int i = 0; i < stack.size(); i++) {
             stack.set(i, stack.get(i) + 1);
           }
-        } else if(!stack.isEmpty()){
+        } else if (!stack.isEmpty()) {
           result += stack.pop();
         }
       }
@@ -125,7 +122,6 @@ public class Main {
   }
 
   /**
-   *
    * Method Name: getNumberOfPiece
    *
    * <p>best practice
@@ -137,10 +133,9 @@ public class Main {
   static int getNumberOfPieces(String query) {
     int result = 0;
     int rod = 0;
-    int open = 0;
     char priorChar = query.charAt(0);
 
-    for(int i = 1; i < query.length(); i++) {
+    for (int i = 1; i < query.length(); i++) {
       char currChar = query.charAt(i);
       // check if it is laser
       if (priorChar == OPEN_BRACKET && currChar == CLOSE_BRACKET) {
@@ -148,7 +143,8 @@ public class Main {
       } else if (priorChar == OPEN_BRACKET && currChar == OPEN_BRACKET) {
         rod++;
         result++;
-      } if(priorChar == CLOSE_BRACKET && currChar == CLOSE_BRACKET) {
+      }
+      if (priorChar == CLOSE_BRACKET && currChar == CLOSE_BRACKET) {
         rod--;
       }
       priorChar = currChar;
@@ -158,10 +154,8 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    try (
-      Scanner in = new Scanner(System.in);
-      PrintWriter out = new PrintWriter(System.out);
-    ) {
+    try (Scanner in = new Scanner(System.in);
+        PrintWriter out = new PrintWriter(System.out); ) {
       String query = in.nextLine();
 
       // validation
