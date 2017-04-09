@@ -162,8 +162,8 @@ public class Main {
       }
 
       // if pieces of iceberg are over 2 or whole iceberg was melted, just return the year
-      if (iceberg >= 2 || zeroCount >= (n - 2) * (m - 2)) {
-        return year;
+      if (zeroCount >= (n - 2) * (m - 2)) {
+        return 0;
       } else {
         // init
         iceberg = 0;
@@ -172,6 +172,7 @@ public class Main {
 
       // the method melt the iceberg
       map = meltIceberg(n, m, map);
+      //printArray(n, m, map);
       year++;
     } // while
   }
@@ -189,6 +190,11 @@ public class Main {
       for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
           map[i][j] = in.nextInt();
+
+          if(i == 0 || j == 0 || i == n - 1 || j == m - 1) {
+            map[i][j] = 0;
+          }
+          assert(map[i][j] >= 0 && map[i][j] <= 10);
         }
       }
 
