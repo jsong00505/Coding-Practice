@@ -22,7 +22,7 @@
 |  2493 | [Tower](https://www.acmicpc.net/problem/2493)                               | [Main.java](src/bj249x/bj2493/Main.java?ts=4)   | 16456 KB | 1928 MS |        |
 |  2504 | [The Price of Brackets](https://www.acmicpc.net/problem/2504)               | [Main.java](src/bj250x/bj2504/Main.java?ts=4)   |  9476 KB |   92 MS |        |
 |  2573 | [Iceberg](https://www.acmicpc.net/problem/2573)                             | [Main.java](src/bj257x/bj2573/Main.java?ts=4)   |          |         |     NS |
-|  2667 | [House Number](https://www.acmicpc.net/problem/2667)                        | [Main.java](src/bj266x/bj2667/Main.java?ts=4)   |          |         |     NS |
+|  2667 | [House Number](https://www.acmicpc.net/problem/2667)                        | [Main.java](src/bj266x/bj2667/Main.java?ts=4)   |  8952 KB |  100 MS |        |
 |  2879 | [Pretty Coding](https://www.acmicpc.net/problem/2879)                       | [Main.java](src/bj287x/bj2879/Main.java?ts=4)   | 10576 KB |  176 MS |        |
 |  5397 | [Key Logger](https://www.acmicpc.net/problem/5397)                          | [Main.java](src/bj539x/bj5397/Main.java?ts=4)   | 19616 KB | 2992 MS |        |
 |  9935 | [String Explosion](https://www.acmicpc.net/problem/9935)                    | [Main.java](src/bj993x/bj9935/Main.java?ts=4)   | 17180 KB |  560 MS |        |
