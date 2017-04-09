@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @email jsong00505@gmail.com
  * @challenge Main
  */
-class Point{
+class Point {
   private int x;
   private int y;
 
@@ -31,6 +31,7 @@ class Point{
     return y;
   }
 }
+
 public class Main {
   static int RIPED = 1;
   static int UNRIPED = 0;
@@ -38,7 +39,7 @@ public class Main {
 
   static void print(int n, int m, int[][] box) {
     System.out.println("=========START=========");
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
       for (int j = 0; j < m; j++) {
         System.out.print(box[i][j] + " ");
       }
@@ -46,32 +47,33 @@ public class Main {
     }
     System.out.println("==========END=========");
   }
+
   static int[][] depthFirstSearch(int n, int m, int[][] box, LinkedList<Point> queue) {
-    for(Point p: queue) {
+    for (Point p : queue) {
       int x = p.getX();
       int y = p.getY();
 
       // up
-      if(x > 0) {
-        if(box[x - 1][y] == UNRIPED) {
+      if (x > 0) {
+        if (box[x - 1][y] == UNRIPED) {
           box[x - 1][y] = RIPED;
         }
       }
       // down
-      if(x < n - 1) {
-        if(box[x + 1][y] == UNRIPED) {
+      if (x < n - 1) {
+        if (box[x + 1][y] == UNRIPED) {
           box[x + 1][y] = RIPED;
         }
       }
       // right
-      if(y < m - 1) {
-        if(box[x][y + 1] == UNRIPED) {
+      if (y < m - 1) {
+        if (box[x][y + 1] == UNRIPED) {
           box[x][y + 1] = RIPED;
         }
       }
       // left
-      if(y > 0) {
-        if(box[x][y - 1] == UNRIPED) {
+      if (y > 0) {
+        if (box[x][y - 1] == UNRIPED) {
           box[x][y - 1] = RIPED;
         }
       }
@@ -80,16 +82,17 @@ public class Main {
     //print(n, m, box);
     return box;
   }
+
   static int getMinDaysRipedAll(int n, int m, int[][] box, int emptySpots) {
     int days = 1;
     int beforeSpots = 0;
-    while(true) {
+    while (true) {
       LinkedList<Point> queue = new LinkedList<>();
       int ripedSpots = 0;
 
-      for(int i = 0; i < n; i++) {
-        for(int j = 0; j < m; j++) {
-          if(box[i][j] == RIPED) {
+      for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+          if (box[i][j] == RIPED) {
             queue.add(new Point(i, j));
           }
         }
@@ -98,17 +101,17 @@ public class Main {
       // update the box by depth-first search
       box = depthFirstSearch(n, m, box, queue);
       //print(n, m, box);
-      for(int i = 0; i < n; i++) {
-        for(int j = 0; j < m; j++) {
-          if(box[i][j] == RIPED) {
+      for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+          if (box[i][j] == RIPED) {
             ripedSpots++;
           }
         }
       }
 
-      if(n * m == emptySpots + ripedSpots) {
+      if (n * m == emptySpots + ripedSpots) {
         break;
-      } else if(beforeSpots == ripedSpots) {
+      } else if (beforeSpots == ripedSpots) {
         days = -1;
         break;
       } else {
@@ -119,6 +122,7 @@ public class Main {
 
     return days;
   }
+
   public static void main(String[] args) {
     try (Scanner in = new Scanner(System.in);
         PrintWriter out = new PrintWriter(System.out); ) {
@@ -135,7 +139,7 @@ public class Main {
         for (int j = 0; j < m; j++) {
           box[i][j] = in.nextInt();
 
-          if(box[i][j] == EMPTY) {
+          if (box[i][j] == EMPTY) {
             emptySpots++;
           }
         }
