@@ -37,6 +37,8 @@ public class Main {
   static int UNRIPED = 0;
   static int EMPTY = -1;
 
+  static int ripedSpots = 0;
+
   static void print(int n, int m, int[][] box) {
     System.out.println("=========START=========");
     for (int i = 0; i < n; i++) {
@@ -57,24 +59,28 @@ public class Main {
       if (x > 0) {
         if (box[x - 1][y] == UNRIPED) {
           box[x - 1][y] = RIPED;
+          ripedSpots++;
         }
       }
       // down
       if (x < n - 1) {
         if (box[x + 1][y] == UNRIPED) {
           box[x + 1][y] = RIPED;
+          ripedSpots++;
         }
       }
       // right
       if (y < m - 1) {
         if (box[x][y + 1] == UNRIPED) {
           box[x][y + 1] = RIPED;
+          ripedSpots++;
         }
       }
       // left
       if (y > 0) {
         if (box[x][y - 1] == UNRIPED) {
           box[x][y - 1] = RIPED;
+          ripedSpots++;
         }
       }
     }
@@ -88,7 +94,6 @@ public class Main {
     int beforeSpots = 0;
     while (true) {
       LinkedList<Point> queue = new LinkedList<>();
-      int ripedSpots = 0;
 
       for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -100,14 +105,6 @@ public class Main {
 
       // update the box by depth-first search
       box = depthFirstSearch(n, m, box, queue);
-      //print(n, m, box);
-      for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-          if (box[i][j] == RIPED) {
-            ripedSpots++;
-          }
-        }
-      }
 
       if (n * m == emptySpots + ripedSpots) {
         break;
@@ -141,6 +138,8 @@ public class Main {
 
           if (box[i][j] == EMPTY) {
             emptySpots++;
+          } else if(box[i][j] == RIPED) {
+            ripedSpots++;
           }
         }
       }
