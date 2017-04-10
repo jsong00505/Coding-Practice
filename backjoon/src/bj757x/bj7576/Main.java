@@ -1,7 +1,6 @@
 package bj757x.bj7576;
 
 import java.io.PrintWriter;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -32,13 +31,67 @@ class Point {
   }
 }
 
+class Queue {
+  int front;
+  int rear;
+  Point[] queue;
+  int size;
+  int maxSize;
+
+  Queue(int maxSize) {
+    this.queue = new Point[maxSize];
+    this.maxSize = maxSize;
+    this.front = 0;
+    this.rear = 0;
+    this.size = 0;
+  }
+
+  boolean isEmpty() {
+    if(size == 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  void push(Point element) {
+    if(rear < maxSize) {
+      queue[rear] = element;
+      rear++;
+      size++;
+    } else {
+      System.out.println("Cannot push an elements any more in this queue because over max size[" + maxSize + "].");
+    }
+  }
+
+  Point pop() {
+    Point element;
+    if(front != rear || size == 0) {
+      element = queue[front];
+      front++;
+      size--;
+    } else {
+      element = new Point(-1, -1);
+      System.out.println("This queue is empty.");
+    }
+
+    if(size == 0) {
+      front = 0;
+      rear = 0;
+    }
+
+    return element;
+  }
+
+}
 public class Main {
   static int RIPED = 1;
   static int UNRIPED = 0;
   static int EMPTY = -1;
 
-  static int ripedSpots = 0;
+  static int totalSpots = 0;
   static boolean[][] visited;
+
   static void print(int n, int m, int[][] box) {
     System.out.println("=========START=========");
     for (int i = 0; i < n; i++) {
@@ -50,8 +103,10 @@ public class Main {
     System.out.println("==========END=========");
   }
 
-  static int[][] depthFirstSearch(int n, int m, int[][] box, LinkedList<Point> queue) {
-    for (Point p : queue) {
+  static int[][] depthFirstSearch(int n, int m, int[][] box, Queue queue) {
+    while (queue.size > 0) {
+      Point p = queue.pop();
+
       int x = p.getX();
       int y = p.getY();
 
@@ -61,28 +116,28 @@ public class Main {
       if (x > 0) {
         if (box[x - 1][y] == UNRIPED) {
           box[x - 1][y] = RIPED;
-          ripedSpots++;
+          totalSpots++;
         }
       }
       // down
       if (x < n - 1) {
         if (box[x + 1][y] == UNRIPED) {
           box[x + 1][y] = RIPED;
-          ripedSpots++;
+          totalSpots++;
         }
       }
       // right
       if (y < m - 1) {
         if (box[x][y + 1] == UNRIPED) {
           box[x][y + 1] = RIPED;
-          ripedSpots++;
+          totalSpots++;
         }
       }
       // left
       if (y > 0) {
         if (box[x][y - 1] == UNRIPED) {
           box[x][y - 1] = RIPED;
-          ripedSpots++;
+          totalSpots++;
         }
       }
     }
@@ -91,18 +146,17 @@ public class Main {
     return box;
   }
 
-  static int getMinDaysRipedAll(int n, int m, int[][] box, int emptySpots) {
+  static int getMinDaysRipedAll(int n, int m, int[][] box) {
     int days = 1;
     int beforeSpots = 0;
     visited = new boolean[n][m];
 
     while (true) {
-      LinkedList<Point> queue = new LinkedList<>();
-
+      Queue queue = new Queue(n * m);
       for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
           if (box[i][j] == RIPED && !visited[i][j]) {
-            queue.add(new Point(i, j));
+            queue.push(new Point(i, j));
           }
         }
       }
@@ -110,14 +164,14 @@ public class Main {
       // update the box by depth-first search
       box = depthFirstSearch(n, m, box, queue);
 
-      if (n * m == emptySpots + ripedSpots) {
+      if (n * m == totalSpots) {
         break;
-      } else if (beforeSpots == ripedSpots) {
+      } else if (beforeSpots == totalSpots) {
         days = -1;
         break;
       } else {
         days++;
-        beforeSpots = ripedSpots;
+        beforeSpots = totalSpots;
       } // if-else
     } // while
 
@@ -132,7 +186,6 @@ public class Main {
       // vertical
       int n = in.nextInt();
 
-      int emptySpots = 0;
       assert (m >= 2 && m <= 1000 && n >= 2 && n <= 1000);
 
       int[][] box = new int[n][m];
@@ -140,15 +193,13 @@ public class Main {
         for (int j = 0; j < m; j++) {
           box[i][j] = in.nextInt();
 
-          if (box[i][j] == EMPTY) {
-            emptySpots++;
-          } else if (box[i][j] == RIPED) {
-            ripedSpots++;
+          if (box[i][j] == EMPTY || box[i][j] == RIPED) {
+            totalSpots++;
           }
         }
       }
 
-      out.println(getMinDaysRipedAll(n, m, box, emptySpots));
+      out.println(getMinDaysRipedAll(n, m, box));
     } catch (Exception e) {
       e.printStackTrace();
     }
