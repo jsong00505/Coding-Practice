@@ -38,7 +38,7 @@ public class Main {
   static int EMPTY = -1;
 
   static int ripedSpots = 0;
-
+  static boolean[][] visited;
   static void print(int n, int m, int[][] box) {
     System.out.println("=========START=========");
     for (int i = 0; i < n; i++) {
@@ -54,6 +54,8 @@ public class Main {
     for (Point p : queue) {
       int x = p.getX();
       int y = p.getY();
+
+      visited[x][y] = true;
 
       // up
       if (x > 0) {
@@ -92,12 +94,14 @@ public class Main {
   static int getMinDaysRipedAll(int n, int m, int[][] box, int emptySpots) {
     int days = 1;
     int beforeSpots = 0;
+    visited = new boolean[n][m];
+
     while (true) {
       LinkedList<Point> queue = new LinkedList<>();
 
       for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-          if (box[i][j] == RIPED) {
+          if (box[i][j] == RIPED && !visited[i][j]) {
             queue.add(new Point(i, j));
           }
         }
@@ -138,7 +142,7 @@ public class Main {
 
           if (box[i][j] == EMPTY) {
             emptySpots++;
-          } else if(box[i][j] == RIPED) {
+          } else if (box[i][j] == RIPED) {
             ripedSpots++;
           }
         }

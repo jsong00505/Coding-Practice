@@ -27,6 +27,7 @@
 |  2879 | [Pretty Coding](https://www.acmicpc.net/problem/2879)                       | [Main.java](src/bj287x/bj2879/Main.java?ts=4)   | 10576 KB |  176 MS |        |
 |  2974 | [Umnozak](https://www.acmicpc.net/problem/2974)                             | [Main.java](src/bj297x/bj2974/Main.java?ts=4)   |          |         |     NS |
 |  5397 | [Key Logger](https://www.acmicpc.net/problem/5397)                          | [Main.java](src/bj539x/bj5397/Main.java?ts=4)   | 19616 KB | 2992 MS |        |
+|  7569 | [Tomato](https://www.acmicpc.net/problem/7569)                              | [Main.java](src/bj756x/bj7569/Main.java?ts=4)   |          |         |     TL |
 |  7576 | [Tomato](https://www.acmicpc.net/problem/7576)                              | [Main.java](src/bj757x/bj7576/Main.java?ts=4)   |          |         |     TL |
 |  9935 | [String Explosion](https://www.acmicpc.net/problem/9935)                    | [Main.java](src/bj993x/bj9935/Main.java?ts=4)   | 17180 KB |  560 MS |        |
 | 10026 | [Cow Art](https://www.acmicpc.net/problem/10026)                            | [Main.java](src/bj1002x/bj10026/Main.java?ts=4) | 10496 KB |  132 MS |        |
