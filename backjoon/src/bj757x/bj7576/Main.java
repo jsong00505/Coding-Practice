@@ -12,12 +12,13 @@ import java.util.Scanner;
  * @github https://github.com/jsong00505
  * @linkedin https://www.linkedin.com/in/junesongskorea/
  * @email jsong00505@gmail.com
- * @challenge Main
+ * @challenge Tomato
  */
 class Point {
   private int x;
   private int y;
   private int day;
+
   Point(int x, int y, int day) {
     this.x = x;
     this.y = y;
@@ -86,7 +87,7 @@ public class Main {
         if (box[x][y + 1] == UNRIPED) {
           box[x][y + 1] = RIPED;
           totalSpots++;
-          queue.add(new Point(x , y + 1, day + 1));
+          queue.add(new Point(x, y + 1, day + 1));
         }
       }
       // left
@@ -99,7 +100,7 @@ public class Main {
       }
     }
 
-    if(totalSpots != n * m) {
+    if (totalSpots != n * m) {
       day = -1;
     }
 
