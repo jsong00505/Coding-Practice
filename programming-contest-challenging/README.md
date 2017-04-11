@@ -10,4 +10,5 @@
 |       2 |   Beginner |      3 | [Stack]                       | [Solution.java](src/chapter2/beginner/example3/Solution.java?ts=4) |
 |       2 |   Beginner |      4 | [Queue]                       | [Solution.java](src/chapter2/beginner/example4/Solution.java?ts=4) |
 |       2 |   Beginner |      5 | [DFS: SUBSET SUM Problem]     | [Solution.java](src/chapter2/beginner/example5/Solution.java?ts=4) |
+|       2 |   Beginner |      6 | [Lake Counting]               | [Solution.java](src/chapter2/beginner/example6/Solution.java?ts=4) |
 
