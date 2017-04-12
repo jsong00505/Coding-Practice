@@ -24,25 +24,26 @@ public class Solution {
     int spots = 0;
 
     int startSpot = x[0];
-    int markedSpot = x[0];
-    for (int i = 0; i < x.length; i++) {
-      if (spots == 0) {
-        if (x[i] - startSpot <= r) {
-          markedSpot = x[i];
-        } else {
-          startSpot = markedSpot;
-          spots++;
-        } // if-else
-      } else {
-        if (x[i] - startSpot <= 2 * r) {
-          markedSpot = x[i];
-          if (i == x.length - 1) {
-            spots++;
-          }
-        } else {
-          startSpot = markedSpot;
-          spots++;
-        } // if-else
+    int markedSpot;
+    int index = 0;
+    while(index < n) {
+      try {
+        while(x[index] - startSpot <= r) {
+          index++;
+        }
+
+        markedSpot = x[index - 1];
+
+        while(x[index] - markedSpot <= r) {
+          index++;
+        }
+
+        startSpot = x[index];
+
+      } catch (ArrayIndexOutOfBoundsException e) {
+        // if occured
+      } finally{
+        spots++;
       }
     }
     return spots;
