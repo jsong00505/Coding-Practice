@@ -26,7 +26,7 @@ public class Solution {
     int end = s.length() - 1;
 
     for (int i = 0; i < t.length; i++) {
-      if(s.charAt(start) < s.charAt(end)) {
+      if (s.charAt(start) < s.charAt(end)) {
         t[i] = s.charAt(start++);
       } else {
         t[i] = s.charAt(end--);
@@ -37,21 +37,21 @@ public class Solution {
   }
 
   public static void main(String[] args) {
-    try(Scanner in = new Scanner(System.in);
-        PrintWriter out = new PrintWriter(System.out);) {
+    try (Scanner in = new Scanner(System.in);
+        PrintWriter out = new PrintWriter(System.out); ) {
       int n = in.nextInt();
 
       // constraints
-      assert(n >= 1 && n <= 2000);
+      assert (n >= 1 && n <= 2000);
 
       String s = in.next();
 
       // constraints
-      assert(n == s.length());
+      assert (n == s.length());
 
       // print
       out.println(getBestCowLine(s));
-    } catch(Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
