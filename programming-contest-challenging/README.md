@@ -14,3 +14,4 @@
 |       2 |      Full Search |   Beginner |      7 | [The Shortest Path Of Maze]   | [Solution.java](src/chapter2/beginner/example7/Solution.java?ts=4) |
 |       2 | Greedy Algorithm |   Beginner |      8 | [Coins]                       | [Solution.java](src/chapter2/beginner/example8/Solution.java?ts=4) |
 |       2 | Greedy Algorithm |   Beginner |      9 | [Lectures]                    | [Solution.java](src/chapter2/beginner/example9/Solution.java?ts=4) |
+|       2 | Greedy Algorithm |   Beginner |     10 | [Best Cow Line]               | [Solution.java](src/chapter2/beginner/example10/Solution.java?ts=4)|
