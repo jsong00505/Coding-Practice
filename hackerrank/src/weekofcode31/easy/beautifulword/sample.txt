@@ -1,0 +1,44 @@
+case #1
+
+Input:
+abacaba
+
+Output:
+Yes
+
+===========
+case #2
+
+Input:
+beauty
+
+Output:
+No
+
+===========
+case #3
+
+Input:
+apple
+
+Output:
+No
+
+===========
+case #4
+
+Input:
+badd
+
+Output:
+No
+
+===========
+case #3
+
+Input:
+yes
+
+Output:
+No
+
