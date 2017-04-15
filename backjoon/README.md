@@ -19,6 +19,7 @@
 | ----- | --------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ------- | ------ |
 |  1000 | [A+B](https://www.acmicpc.net/problem/1000)                                 | [Main.java](src/bj100x/bj1000/Main.java?ts=4)   |  8976 KB |   92 MS |        |
 |  1016 | [Squared nn Digit](https://www.acmicpc.net/problem/1016)                    | [Main.java](src/bj101x/bj1016/Main.java?ts=4)   | 13460 KB | 1192 MS |        |
+|  1525 | [Puzzle](https://www.acmicpc.net/problem/1525)                              | [Main.java](src/bj152x/bj1525/Main.java?ts=4)   |          |         |     NS |
 |  1676 | [The Number of Factorial 0](https://www.acmicpc.net/problem/1676)           | [Main.java](src/bj167x/bj1676/Main.java?ts=4)   |  8776 KB |  100 MS |        |
 |  1740 | [Power of N](https://www.acmicpc.net/problem/1740)                          | [Main.java](src/bj174x/bj1740/Main.java?ts=4)   |  8684 KB |   96 MS |        |
 |  1966 | [Printer Queue](https://www.acmicpc.net/problem/1966)                       | [Main.java](src/bj196x/bj1966/Main.java?ts=4)   | 11596 KB |  184 MS |        |
@@ -33,6 +34,7 @@
 |  5397 | [Key Logger](https://www.acmicpc.net/problem/5397)                          | [Main.java](src/bj539x/bj5397/Main.java?ts=4)   | 19616 KB | 2992 MS |        |
 |  7569 | [Tomato](https://www.acmicpc.net/problem/7569)                              | [Main.java](src/bj756x/bj7569/Main.java?ts=4)   | 22144 KB | 1696 MS |        |
 |  7576 | [Tomato](https://www.acmicpc.net/problem/7576)                              | [Main.java](src/bj757x/bj7576/Main.java?ts=4)   | 18952 KB | 1320 MS |        |
+|  9019 | [DSLR](https://www.acmicpc.net/problem/9019)                                | [Main.java](src/bj901x/bj9019/Main.java?ts=4)   | 33248 KB | 9492 MS |        |
 |  9935 | [String Explosion](https://www.acmicpc.net/problem/9935)                    | [Main.java](src/bj993x/bj9935/Main.java?ts=4)   | 17180 KB |  560 MS |        |
 | 10026 | [Cow Art](https://www.acmicpc.net/problem/10026)                            | [Main.java](src/bj1002x/bj10026/Main.java?ts=4) | 10496 KB |  132 MS |        |
 | 10799 | [A Steel Rod](https://www.acmicpc.net/problem/10799)                        | [Main.java](src/bj1079x/bj10799/Main.java?ts=4) | 12576 KB |  220 MS |        |

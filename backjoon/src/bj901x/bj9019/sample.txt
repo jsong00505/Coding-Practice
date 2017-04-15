@@ -1,0 +1,42 @@
+case #1
+
+Input:
+3
+1234 3412
+1000 1
+1 16
+
+Output:
+LL
+L
+DDDD
+
+==============
+case #2
+
+Input:
+1
+1234 3412
+
+Output:
+LL
+
+==============
+case #3
+
+Input:
+1
+1 16
+
+Output:
+DDDD
+
+==============
+case #3
+
+Input:
+1
+0 9990
+
+Output:
+SDDSD
