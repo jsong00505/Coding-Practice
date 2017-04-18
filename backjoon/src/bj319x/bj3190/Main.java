@@ -33,9 +33,9 @@ class SnakeCommand {
 }
 
 class Snake {
-  private static int x;
-  private static int y;
-  private static int length;
+  private int x;
+  private int y;
+  private int length;
 
   Snake(int x, int y, int length) {
     this.x = x;
@@ -71,6 +71,16 @@ public class Main {
   static char UP_DIRECTION = 'U';
   static char DOWN_DIRECTION = 'D';
 
+  static void print(char[][] board) {
+    System.out.println("=========START=========");
+    for(int i = 0; i < board.length; i++) {
+      for(int j = 0; j < board[i].length; j++) {
+        System.out.print(board[i][j] + " ");
+      }
+      System.out.println();
+    }
+    System.out.println("=========END=========");
+  }
   static char changeDirection(char original, char command) {
     char changed = original;
 
@@ -120,6 +130,7 @@ public class Main {
     int x = 0;
     int y = 0;
     int length = 1;
+    boolean isApple = false;
     char direction = RIGHT_DIRECTION;
 
     SnakeCommand snakeCommand = new SnakeCommand(-1, ' ');
@@ -129,7 +140,9 @@ public class Main {
     board[x][y] = SNAKE;
 
     while(apples != 0) {
-      if(snakeCommand.getSeconds() < seconds) {
+
+      //print(board);
+      if(snakeCommand.getSeconds() < seconds && !queue.isEmpty()) {
         snakeCommand = queue.removeFirst();
       }
 
@@ -143,106 +156,93 @@ public class Main {
       // up
       if(direction == UP_DIRECTION) {
         if(x > 0) {
-          if(board[x - 1][y] == APPLE) {
-            // if the snake get an apple, the snake extends its length
-            length++;
-          } else {
-            // moved snake's body to upper side
-            Snake movedSnake = snake.removeFirst();
-            board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
-          }
+          // update head's position
+          x--;
 
-          if(board[x - 1][y] == SNAKE) {
+          if(board[x][y] == SNAKE) {
             // crush the snake to its body
             break;
           } else {
-            snake.add(new Snake(x - 1, y, length));
-            board[x - 1][y] = SNAKE;
-          }
+            // if not an apple, moved snake's body to upper side
+            if(board[x][y] != APPLE) {
+              Snake movedSnake = snake.removeFirst();
+              board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
+            }
 
-          // update position
-          x--;
+            snake.add(new Snake(x, y, length));
+            board[x][y] = SNAKE;
+          }
         } else {
           // crush the snake to wall
           break;
         }
       } else if(direction == DOWN_DIRECTION) {
         if(x < n - 1) {
+          // update head's position
+          x++;
 
-          if(board[x + 1][y] == APPLE) {
-            // if the snake get an apple, the snake extends its length
-            length++;
-          } else {
-            // moved snake's body to upper side
-            Snake movedSnake = snake.removeFirst();
-            board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
-          }
-
-          if(board[x + 1][y] == SNAKE) {
+          if(board[x][y] == SNAKE) {
             // crush the snake to its body
             break;
           } else {
-            snake.add(new Snake(x + 1, y, length));
-            board[x + 1][y] = SNAKE;
-          }
+            // if not an apple, moved snake's body to upper side
+            if(board[x][y] != APPLE) {
+              Snake movedSnake = snake.removeFirst();
+              board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
+            }
 
-          // update position
-          x++;
+            snake.add(new Snake(x, y, length));
+            board[x][y] = SNAKE;
+          }
         } else {
           // crush the snake to wall
           break;
         }
       } else if(direction == LEFT_DIRECTION) {
         if(y > 0) {
-          if(board[x][y - 1] == APPLE) {
-            // if the snake get an apple, the snake extends its length
-            length++;
-          } else {
-            // moved snake's body to upper side
-            Snake movedSnake = snake.removeFirst();
-            board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
-          }
+          // update head's position
+          y--;
 
-          if(board[x][y - 1] == SNAKE) {
+          if(board[x][y] == SNAKE) {
             // crush the snake to its body
             break;
           } else {
-            snake.add(new Snake(x, y - 1, length));
-            board[x][y - 1] = SNAKE;
+            // if not an apple, moved snake's body to upper side
+            if(board[x][y] != APPLE) {
+              Snake movedSnake = snake.removeFirst();
+              board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
+            }
+
+            snake.add(new Snake(x, y, length));
+            board[x][y] = SNAKE;
           }
         } else {
           // crush the snake to wall
           break;
         }
-
-        // update position
-        y--;
       } else if(direction == RIGHT_DIRECTION) {
         if(y < n - 1) {
-          if(board[x][y + 1] == APPLE) {
-            // if the snake get an apple, the snake extends its length
-            length++;
-          } else {
-            // moved snake's body to upper side
-            Snake movedSnake = snake.removeFirst();
-            board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
-          }
+          // update head's position
+          y++;
 
-          if(board[x][y + 1] == SNAKE) {
+          if (board[x][y] == SNAKE) {
             // crush the snake to its body
             break;
           } else {
-            snake.add(new Snake(x, y + 1, length));
-            board[x][y + 1] = SNAKE;
-          }
-        } else {
-          // crush the snake to wall
-          break;
-        }
+            // if not an apple, moved snake's body to upper side
+            if (board[x][y] != APPLE) {
+              Snake movedSnake = snake.removeFirst();
+              board[movedSnake.getX()][movedSnake.getY()] = EMPTY;
+            }
 
-        // update position
-        y++;
-      } // if
+            snake.add(new Snake(x, y, length));
+            board[x][y] = SNAKE;
+          }
+        } // if
+      } // if-else
+      /*for(Snake s: snake) {
+        System.out.println(s.getX() + ", " + s.getY());
+      }*/
     } // while
 
 
