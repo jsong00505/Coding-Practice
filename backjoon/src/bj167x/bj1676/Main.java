@@ -7,13 +7,12 @@ import java.util.Scanner;
 /**
  * Created by jsong on 30/03/2017.
  *
- * @hackerrank  https://www.hackerrank.com/jsong00505
- * @backjoon    https://www.acmicpc.net/user/jsong00505
- * @github      https://github.com/jsong00505
- * @linkedin    https://www.linkedin.com/in/junesongskorea/
- * @email       jsong00505@gmail.com
- *
- * @challenge   The Number of Factorial 0
+ * @hackerrank https://www.hackerrank.com/jsong00505
+ * @backjoon https://www.acmicpc.net/user/jsong00505
+ * @github https://github.com/jsong00505
+ * @linkedin https://www.linkedin.com/in/junesongskorea/
+ * @email jsong00505@gmail.com
+ * @challenge The Number of Factorial 0
  */
 public class Main {
   /**
@@ -67,10 +66,8 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    try (
-      Scanner in = new Scanner(System.in);
-      PrintWriter out = new PrintWriter(System.out);
-    ) {
+    try (Scanner in = new Scanner(System.in);
+        PrintWriter out = new PrintWriter(System.out); ) {
       // get 'n' of 'n!'
       int n = in.nextInt();
 

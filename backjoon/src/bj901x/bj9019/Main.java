@@ -32,6 +32,7 @@ class CommandList {
     return commands;
   }
 }
+
 public class Main {
   // type of commands
   static char D = 'D';
@@ -40,11 +41,7 @@ public class Main {
   static char R = 'R';
 
   /**
-   * update a value by command
-   * D : increase twice
-   * S : decrease one
-   * L : left shift
-   * R : right shift
+   * update a value by command D : increase twice S : decrease one L : left shift R : right shift
    *
    * @param value
    * @param command
@@ -62,7 +59,7 @@ public class Main {
       int secondDigit = (value % 1000) / 100;
       int thirdDigit = (value % 100) / 10;
       int lastDigit = value % 10;
-      result = secondDigit * 1000 + thirdDigit * 100 + lastDigit * 10 + firstDigit ;
+      result = secondDigit * 1000 + thirdDigit * 100 + lastDigit * 10 + firstDigit;
     } else if (command == R) {
       int firstDigit = value / 1000;
       int secondDigit = (value % 1000) / 100;
@@ -74,7 +71,7 @@ public class Main {
       result = -1;
     }
 
-    if(result == -1) {
+    if (result == -1) {
       result = 9999;
     }
 
@@ -100,14 +97,14 @@ public class Main {
     while (true) {
       CommandList commandList = queue.removeFirst();
       //System.out.println(commandList.getCommands() + " >> " + commandList.getValue());
-      if(targetValue == commandList.getValue()) {
+      if (targetValue == commandList.getValue()) {
         result = commandList.getCommands();
         break;
       }
 
       // D
       temp = updateValueByCommand(commandList.getValue(), D);
-      if(!visited.containsKey(temp)) {
+      if (!visited.containsKey(temp)) {
         visited.put(temp, true);
         String initString = commandList.getCommands();
         queue.add(new CommandList(initString + D, temp));
@@ -115,7 +112,7 @@ public class Main {
       }
       // S
       temp = updateValueByCommand(commandList.getValue(), S);
-      if(!visited.containsKey(temp)) {
+      if (!visited.containsKey(temp)) {
         visited.put(temp, true);
         String initString = commandList.getCommands();
         queue.add(new CommandList(initString + S, temp));
@@ -123,7 +120,7 @@ public class Main {
       }
       // L
       temp = updateValueByCommand(commandList.getValue(), L);
-      if(!visited.containsKey(temp)) {
+      if (!visited.containsKey(temp)) {
         visited.put(temp, true);
         String initString = commandList.getCommands();
         queue.add(new CommandList(initString + L, temp));
@@ -131,7 +128,7 @@ public class Main {
       }
       // R
       temp = updateValueByCommand(commandList.getValue(), R);
-      if(!visited.containsKey(temp)) {
+      if (!visited.containsKey(temp)) {
         visited.put(temp, true);
         String initString = commandList.getCommands();
         queue.add(new CommandList(initString + R, temp));

@@ -7,13 +7,12 @@ import java.util.Scanner;
 /**
  * Created by jsong on 31/03/2017.
  *
- * @hackerrank  https://www.hackerrank.com/jsong00505
- * @backjoon    https://www.acmicpc.net/user/jsong00505
- * @github      https://github.com/jsong00505
- * @linkedin    https://www.linkedin.com/in/junesongskorea/
- * @email       jsong00505@gmail.com
- *
- * @challenge   Maze
+ * @hackerrank https://www.hackerrank.com/jsong00505
+ * @backjoon https://www.acmicpc.net/user/jsong00505
+ * @github https://github.com/jsong00505
+ * @linkedin https://www.linkedin.com/in/junesongskorea/
+ * @email jsong00505@gmail.com
+ * @challenge Maze
  */
 class Maze {
   int x;
@@ -85,7 +84,7 @@ public class Main {
           queue.add(new Maze(x, y + 1, length + 1));
         }
       }
-      if(x == n - 1 && y == m - 1) {
+      if (x == n - 1 && y == m - 1) {
         break;
       }
     }
@@ -93,10 +92,8 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    try (
-      Scanner in = new Scanner(System.in);
-      PrintWriter out = new PrintWriter(System.out);
-    ) {
+    try (Scanner in = new Scanner(System.in);
+        PrintWriter out = new PrintWriter(System.out); ) {
       int n = in.nextInt();
       int m = in.nextInt();
 

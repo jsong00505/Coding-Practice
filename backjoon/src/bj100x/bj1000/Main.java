@@ -6,13 +6,12 @@ import java.util.Scanner;
 /**
  * Created by jsong on 29/03/2017.
  *
- * @hackerrank  https://www.hackerrank.com/jsong00505
- * @backjoon    https://www.acmicpc.net/user/jsong00505
- * @github      https://github.com/jsong00505
- * @linkedin    https://www.linkedin.com/in/junesongskorea/
- * @email       jsong00505@gmail.com
- *
- * @challenge   A+B
+ * @hackerrank https://www.hackerrank.com/jsong00505
+ * @backjoon https://www.acmicpc.net/user/jsong00505
+ * @github https://github.com/jsong00505
+ * @linkedin https://www.linkedin.com/in/junesongskorea/
+ * @email jsong00505@gmail.com
+ * @challenge A+B
  */
 public class Main {
   public static void main(String[] args) {

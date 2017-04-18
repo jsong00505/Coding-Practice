@@ -191,10 +191,10 @@ public class Main {
         for (int j = 0; j < m; j++) {
           map[i][j] = in.nextInt();
 
-          if(i == 0 || j == 0 || i == n - 1 || j == m - 1) {
+          if (i == 0 || j == 0 || i == n - 1 || j == m - 1) {
             map[i][j] = 0;
           }
-          assert(map[i][j] >= 0 && map[i][j] <= 10);
+          assert (map[i][j] >= 0 && map[i][j] <= 10);
         }
       }
 
