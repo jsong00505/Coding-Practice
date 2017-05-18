@@ -1,0 +1,7 @@
+Afterburner, A, 7, 6, 6, 6, 5, 9, 7, 7
+Air Raid, A, 5, 7, 9, 7, 5, 10, 8, 7
+Beachcomber, A, 3, 9, 5, 9, 6, 6, 1, 10
+Blades, A, 7, 6, 7, 5, 5, 9, 7, 7
+Blaster, A, 8, 8, 2, 8, 7, 9, 7, 9
+Bluestreak, A, 6, 6, 7, 9, 5, 2, 9, 7
+Optimus Prime, A, 10, 10, 8, 10, 10, 10, 8, 10
