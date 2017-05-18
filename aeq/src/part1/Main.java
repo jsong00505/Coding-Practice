@@ -68,7 +68,6 @@ public class Main {
         } // if-else
       } // if-else
 
-
       if ((i == points.length - 1)) {
         if (stack.isEmpty()) {
           // if the point is the last one and the stack is empty, the series of integer have same values
