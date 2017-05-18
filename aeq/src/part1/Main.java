@@ -77,7 +77,7 @@ public class Main {
           // if the point is the last one and the status is increase, it should be a peak
           numberOfCastle++;
         }
-      }
+      } // if
 
       // set the first point to the second point for the next
       firstPoint = secondPoint;
@@ -101,6 +101,6 @@ public class Main {
       }
     } catch (Exception e) {
       System.err.println(e.toString());
-    }
+    } // try-catch
   }
 }
