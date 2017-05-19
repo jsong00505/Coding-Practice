@@ -1,11 +1,11 @@
 case #1
 
-input:
+Input:
 Soundwave, D, 8,9,2,6,7,5,6,10
 Bluestreak, A, 6,6,7,9,5,2,9,7
 Hubcap, A, 4,4,4,4,4,4,4,4
 
-output:
+Output:
 1 battle
 Winning team (Decepticons): Soundwave
 Survivors from the losing team (Autobots): Hubcap
@@ -13,7 +13,7 @@ Survivors from the losing team (Autobots): Hubcap
 ==========
 case #2
 
-input:
+Input:
 Afterburner, A, 7, 6, 6, 6, 5, 9, 7, 7
 Air Raid, A, 5, 7, 9, 7, 5, 10, 8, 7
 Beachcomber, A, 3, 9, 5, 9, 6, 6, 1, 10
@@ -28,7 +28,81 @@ Barrage, D, 3, 8, 3, 7, 5, 10, 9, 8
 Battletrap, D, 7, 3, 6, 8, 6, 6, 7, 7
 Blast Off, D, 3, 8, 10, 3, 5, 5, 9, 10
 
-output:
+Output:
 6 battles
 Winning team (Autobots): Optimus Prime, Beachcomber, Blades, Air Raid, Afterburner
 Survivors from the losing team (Decepticons): Astrotrain, Blast Off
+
+Reason:
+1st battle
+Optimus Prime(10) vs Battletrap(6)
+-> Optimus Prime should won with no reason
+
+2nd battle
+Blaster(7) vs Astrotrain(6)
+-> Blaster's overall: 33 and Astrotrain's overall: 39, so Astrotrain won
+
+3rd battle
+Beachcomber(6) vs Apeface(6)
+-> Beachcomber's skill is 3 more than Apeface's, so Beachcomber won
+
+4th battle
+Bluestreak(5) vs Blast Off(5)
+-> Blast Off's skill is 3 more than Bluestreak's, so Blast Off won
+
+5th battle
+Blades(5) vs Barrage(5)
+-> Blades' overall(32) is 2 more than Barrage's(30), so Blades won
+
+6th battle
+Air Raid(5) vs Abominus(5)
+-> Air Raid's skill is 3 more than Abominus's, so Air Raid won
+
+Afterburner just skips a match because of no one to fight in Decepticons
+
+=> Autobots won 4 times and Decepticons won 2 times, so Autobots won for this battle
+==========
+case #3
+
+input:
+Blaster, A, 8, 8, 2, 8, 7, 9, 7, 9
+Bluestreak, A, 6, 6, 7, 9, 5, 2, 9, 7
+Optimus Prime, A, 10, 10, 8, 10, 10, 10, 8, 10
+Predaking, D, 10, 5, 8, 8, 7, 9, 9, 8
+Barrage, D, 3, 8, 3, 7, 5, 10, 9, 8
+
+output:
+Autobots and Decepticons lost their great own leaders.
+However, they don't want to fight each other.
+So they live in the earth together happily.
+
+reason:
+Optimus Prime and Predaking faced to fight, so the war was end immediately.
+
+==========
+case #4
+
+Input:
+Blaster, A, 8, 8, 2, 8, 7, 9, 7, 9
+Bluestreak, A, 6, 6, 7, 9, 5, 2, 9, 7
+Predaking, D, 10, 5, 8, 8, 7, 9, 9, 8
+Barrage, D, 3, 8, 3, 7, 5, 10, 9, 8
+
+Output:
+2 battles
+Winning team : This game is a tie. They will face to fight in soon.
+Survivors from Autobots: Bluestreak
+Survivors from Decepticons: Predaking
+
+==========
+case #5
+
+Input:
+Scorponok, D, 10, 9, 4, 10, 10, 10, 9, 9
+Predaking, D, 10, 5, 8, 8, 7, 9, 9, 8
+Optimus Prime, A, 10, 10, 8, 10, 10, 10, 8, 10
+
+Output:
+1 battle
+Winning team (Autobots): Optimus Prime
+Survivors from the losing team (Decepticons): Predaking
