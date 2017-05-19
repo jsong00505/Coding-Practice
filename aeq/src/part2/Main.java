@@ -18,6 +18,12 @@ public class Main {
   private static String OPTIMUS_PRIME = "Optimus Prime";
   private static String PREDAKING = "Predaking";
 
+  /**
+   * Print out the name of all members who survived
+   *
+   * @param transformers
+   * @param out
+   */
   public static void print(List<Transformer> transformers, PrintWriter out) {
     boolean firstComma = false;
     for (int i = 0; i < transformers.size(); i++) {
@@ -35,6 +41,11 @@ public class Main {
     out.println();
   }
 
+  /**
+   * @param autobot
+   * @param decepticon
+   * @return a winner team
+   */
   public static char fight(Transformer autobot, Transformer decepticon) {
     char winner = NONE;
 
@@ -97,17 +108,19 @@ public class Main {
       while (!(line = in.nextLine()).equals("")) {
         String[] stats = line.split(",");
 
-        // declare and set this value for validation
-        char team = stats[1].trim().charAt(0);
-
         // validation
         if (stats.length != 10) {
           throw new Exception("The number of stats should be ten.");
-        } else if (team != AUTOBOT && team != DECEPTICON) {
-          throw new Exception(
-              "The team of the transformer should be Autobot or Decepticon.[" + team + "]");
-        } // if-else
+        }
 
+        // declare and set this value for validation
+        char team = stats[1].trim().charAt(0);
+
+        if (team != AUTOBOT && team != DECEPTICON) {
+          throw new Exception("The team of the transformer should be Autobot or Decepticon.");
+        }
+
+        // set a transformer in the proper team
         Transformer transformer = new Transformer(stats);
 
         if (transformer.getTeam() == AUTOBOT) {
@@ -166,7 +179,7 @@ public class Main {
           print(autobots, out);
         } else {
           // tie
-          out.println("This game is a tie. They will face to fight in soon.");
+          out.println(": This game is a tie. They will face to fight in soon.");
           out.print("Survivors from Autobots: ");
           print(autobots, out);
           out.print("Survivors from Decepticons: ");
@@ -174,7 +187,7 @@ public class Main {
         } // if-else
       } else {
         out.println(
-            "Autobots and Decepticons lost their great own leader.\nHowever, they didn't want to fight each other.\nSo they live in the earth together happily.");
+            "Autobots and Decepticons lost their great own leaders.\nHowever, they don't want to fight each other.\nSo they live in the earth together happily.");
       } // if-else
     } catch (Exception e) {
       System.err.println(e.toString());
