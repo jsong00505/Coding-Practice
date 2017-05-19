@@ -19,7 +19,7 @@ Also, check the information of robots below(Only some of robots):
 ## How To Test
 
 1. Run the Main class
-2. Enter the robot's information like below
+2. Enter the robots' information in console like below
 
 ```
 Scorponok, D, 10, 9, 4, 10, 10, 10, 9, 9
