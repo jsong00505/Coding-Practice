@@ -103,12 +103,26 @@ public class Main {
     System.out.println("==========");
   }
 
+  public static char[][] passArr(char[][] array) {
+    return array;
+  }
+
   public static String hashed(Marvels marvels) {
     StringBuilder hashString = new StringBuilder();
-    hashString.append(marvels.getRed().getX());
-    hashString.append(marvels.getRed().getY());
-    hashString.append(marvels.getBlue().getX());
-    hashString.append(marvels.getBlue().getY());
+    if (marvels.getRed() == null) {
+      hashString.append(-1).append(-1);
+    } else {
+      hashString.append(marvels.getRed().getX());
+      hashString.append(marvels.getRed().getY());
+    }
+
+    if (marvels.getBlue() == null) {
+      hashString.append(-1).append(-1);
+    } else {
+      hashString.append(marvels.getBlue().getX());
+      hashString.append(marvels.getBlue().getY());
+    }
+
 
     return hashString.toString();
   }
@@ -116,11 +130,12 @@ public class Main {
   public static char checkEscapeXae(Marvels marvels) {
     char result = CONTINUED;
 
-    if (marvels.getBlue() == null && marvels.getRed() == null) {
+    if (marvels.getBlue() == null) {
       result = FAILED;
     } else if (marvels.getRed() == null) {
       result = SUCCEED;
     }
+
     return result;
   }
 
@@ -178,6 +193,7 @@ public class Main {
       } else if (color == BLUE_MARBLE && board[startX][startY] == RED_MARBLE) {
         break;
       } else if (board[startX][startY] == HOLE) {
+
         return board;
       }
     }
@@ -207,15 +223,12 @@ public class Main {
       marvels = queue.removeFirst();
       Marvels temp;
 
-      char[][] original = board;
+      char[][] original = passArr(board);
 
       minimumNumber = marvels.getMinimumNumber();
 
-      System.out.println("QSIZE: " + queue.size());
-      System.out.println("MIN: " + minimumNumber);
-      print(original);
-
       if (minimumNumber > 10) {
+        minimumNumber = -1;
         continue;
       }
 
@@ -224,6 +237,7 @@ public class Main {
       if (resultFlag == SUCCEED) {
         break;
       } else if (resultFlag == FAILED) {
+        minimumNumber = -1;
         continue;
       }
 
@@ -239,33 +253,25 @@ public class Main {
       board = move(LEFT, original, marvels.getRed(), RED_MARBLE);
       board = move(LEFT, board, marvels.getBlue(), BLUE_MARBLE);
 
-      temp = new Marvels(minimumNumber);
-
-      queue.add(setPosition(board, temp));
+      queue.add(setPosition(board, new Marvels(minimumNumber)));
 
       // right
       board = move(RIGHT, original, marvels.getRed(), RED_MARBLE);
       board = move(RIGHT, board, marvels.getBlue(), BLUE_MARBLE);
 
-      temp = new Marvels(minimumNumber);
-
-      queue.add(setPosition(board, temp));
+      queue.add(setPosition(board, new Marvels(minimumNumber)));
 
       // up
       board = move(UP, original, marvels.getRed(), RED_MARBLE);
       board = move(UP, board, marvels.getBlue(), BLUE_MARBLE);
 
-      temp = new Marvels(minimumNumber);
-
-      queue.add(setPosition(board, temp));
+      queue.add(setPosition(board, new Marvels(minimumNumber)));
 
       // down
       board = move(DOWN, original, marvels.getRed(), RED_MARBLE);
       board = move(DOWN, board, marvels.getBlue(), BLUE_MARBLE);
 
-      temp = new Marvels(minimumNumber);
-
-      queue.add(setPosition(board, temp));
+      queue.add(setPosition(board, new Marvels(minimumNumber)));
     }
 
     return minimumNumber;
