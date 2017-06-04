@@ -31,8 +31,8 @@ public class Solution {
 
     int pivotPosition = 0;
 
-    for(int i = 1; i < ar.length; i++) {
-      if(ar[i] <= pivot) {
+    for (int i = 1; i < ar.length; i++) {
+      if (ar[i] <= pivot) {
         // left
         partitionAr.add(pivotPosition++, ar[i]);
       } else {
