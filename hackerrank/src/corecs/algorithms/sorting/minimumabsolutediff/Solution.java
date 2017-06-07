@@ -21,19 +21,33 @@ public class Solution {
       int n = in.nextInt();
 
       // validation
-      assert (1 < n && n <= 10000);
+      assert (1 < n && n <= 100000);
 
       // initialize an array of the integers
       int[] a = new int[n];
       for (int i = 0; i < n; i++) {
         // set a integer
-        a[n] = in.nextInt();
+        a[i] = in.nextInt();
 
         // validation
         assert (-1000000000 <= n && n <= 1000000000);
       }
 
+      // init
+      int min = Math.abs(a[1] - a[0]);
 
+      // find minimum absolute difference
+      for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+          // compare difference with min
+          if (min > Math.abs(a[j] - a[i])) {
+            min = Math.abs(a[j] - a[i]);
+          }
+        }
+      }
+
+      // print
+      out.println(min);
     } catch (Exception e) {
       e.printStackTrace();
     }
