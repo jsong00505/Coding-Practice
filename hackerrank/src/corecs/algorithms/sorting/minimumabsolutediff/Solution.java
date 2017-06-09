@@ -1,6 +1,7 @@
 package corecs.algorithms.sorting.minimumabsolutediff;
 
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -14,9 +15,57 @@ import java.util.Scanner;
  * @challenge Minimum Absolute Difference in an Array
  */
 public class Solution {
+
+  /**
+   * greedy algorithm
+   *
+   * @param a
+   * @return min
+   */
+  static int greedyAlgorithm(int[] a) {
+    // init
+    int min = Math.abs(a[1] - a[0]);
+    int n = a.length;
+
+    // sort
+    Arrays.sort(a);
+
+    // find minimum absolute difference
+    for (int i = 1; i < n; i++) {
+      if (min > Math.abs(a[i] - a[i - 1])) {
+        min = Math.abs(a[i] - a[i - 1]);
+      }
+    }
+
+    return min;
+  }
+  /**
+   * brute-force(failed to pass the challenge)
+   *
+   * @param a
+   * @return min
+   */
+  static int bruteForce(int[] a) {
+    // init
+    int min = Math.abs(a[1] - a[0]);
+    int n = a.length;
+
+    // find minimum absolute difference
+    for (int i = 0; i < n; i++) {
+      for (int j = i + 1; j < n; j++) {
+        // compare difference with min
+        if (min > Math.abs(a[j] - a[i])) {
+          min = Math.abs(a[j] - a[i]);
+        }
+      }
+    }
+
+    return min;
+  }
+
   public static void main(String[] args) {
     try (Scanner in = new Scanner(System.in);
-         PrintWriter out = new PrintWriter(System.out)) {
+        PrintWriter out = new PrintWriter(System.out)) {
       // initialize and declare the number of integers
       int n = in.nextInt();
 
@@ -33,21 +82,8 @@ public class Solution {
         assert (-1000000000 <= n && n <= 1000000000);
       }
 
-      // init
-      int min = Math.abs(a[1] - a[0]);
-
-      // find minimum absolute difference
-      for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-          // compare difference with min
-          if (min > Math.abs(a[j] - a[i])) {
-            min = Math.abs(a[j] - a[i]);
-          }
-        }
-      }
-
       // print
-      out.println(min);
+      out.println(greedyAlgorithm(a));
     } catch (Exception e) {
       e.printStackTrace();
     }
