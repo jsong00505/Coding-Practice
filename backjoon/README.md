@@ -3,7 +3,7 @@
 [Backjoon](https://www.acmicpc.net) is the one of Algorithm Online Judgement Site in Korea. 
 Difficulty is not bad, and the site support a lot of programming languages. Also, he provides online courses for strategy solving algorithms 
 
-[(23/28 solved)](https://www.acmicpc.net/user/jsong00505)
+[(23/29 solved)](https://www.acmicpc.net/user/jsong00505)
 
 ## Label
 
@@ -20,6 +20,7 @@ Difficulty is not bad, and the site support a lot of programming languages. Also
 | ----- | --------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ------- | ------ |
 |  1000 | [A+B](https://www.acmicpc.net/problem/1000)                                 | [Main.java](src/bj100x/bj1000/Main.java?ts=4)   |  8976 KB |   92 MS |        |
 |  1016 | [Squared nn Digit](https://www.acmicpc.net/problem/1016)                    | [Main.java](src/bj101x/bj1016/Main.java?ts=4)   | 13460 KB | 1192 MS |        |
+|  1114 | [Squared nn Digit](https://www.acmicpc.net/problem/1114)                    | [Main.java](src/bj111x/bj1114/Main.java?ts=4)   |          |         |     NS |
 |  1467 | [Remove Numbers](https://www.acmicpc.net/problem/1467)                      | [Main.java](src/bj147x/bj1467/Main.java?ts=4)   |          |         |     TL |
 |  1525 | [Puzzle](https://www.acmicpc.net/problem/1525)                              | [Main.java](src/bj152x/bj1525/Main.java?ts=4)   | 27504 KB | 1000 MS |        |
 |  1676 | [The Number of Factorial 0](https://www.acmicpc.net/problem/1676)           | [Main.java](src/bj167x/bj1676/Main.java?ts=4)   |  8776 KB |  100 MS |        |
