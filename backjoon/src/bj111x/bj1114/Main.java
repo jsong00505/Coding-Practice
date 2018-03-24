@@ -1,7 +1,7 @@
 package bj111x.bj1114;
 
 import java.io.PrintWriter;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by jsong on 20/02/2018.
@@ -14,53 +14,94 @@ import java.util.Scanner;
  * @challenge Slice Logs
  */
 public class Main {
+  // define as a global in the class since I don't want to use this repeatedly for API
+  private static int l;
+  private static int k;
+  private static int c;
+  private static List<Integer> POSITIONS;
+
+  // final result
+  private static int LONGEST_STICK = 0;
+  private static int FIRST_CUT_POSITION = 0;
+
+  public static void getBest(LinkedList<Integer> sticks) {
+
+    int veryFirst;
+    int first;
+    int second;
+    int stick;
+    int logest;
+
+    veryFirst = sticks.remove();
+    first = veryFirst;
+    second = veryFirst;
+    logest = veryFirst;
+
+    while (!sticks.isEmpty()) {
+      second = sticks.remove();
+      stick = second - first;
+      if (logest < stick) {
+        logest = stick;
+      }
+      first = second;
+    }
+    stick = l - second;
+    if (logest < stick) {
+      logest = stick;
+    }
+
+    if (logest < LONGEST_STICK || LONGEST_STICK == 0) {
+      LONGEST_STICK = logest;
+      FIRST_CUT_POSITION = veryFirst;
+    }
+  }
+
+  public static void cutLog(LinkedList<Integer> sticks, int index) {
+
+    // check if the number of cut is over
+    if (sticks.size() == c) {
+      getBest(sticks);
+      return;
+    }
+
+    int loopingCount = POSITIONS.size() - sticks.size() - (c - 1);
+
+
+    for (int i = 0; i < loopingCount; i++) {
+      LinkedList<Integer> copy = (LinkedList<Integer>) sticks.clone();
+      copy.add(POSITIONS.get(index++));
+      cutLog(copy, index);
+    }
+  }
+
   public static void main(String[] args) {
     try (Scanner in = new Scanner(System.in);
-         PrintWriter out = new PrintWriter(System.out); ) {
-      int l = in.nextInt();
-      int k = in.nextInt();
-      int c = in.nextInt();
+        PrintWriter out = new PrintWriter(System.out) ) {
+      l = in.nextInt();
+      k = in.nextInt();
+      c = in.nextInt();
 
-      assert( l > 0 && l < 1000000000 );
-      assert( k > 0 && k < 10000 );
-      assert( c > 0 && c < 10000 );
+      assert (l > 0 && l < 1000000000);
+      assert (k > 0 && k < 10000);
+      assert (c > 0 && c < 10000);
 
-      int middle = l / 2;
-
-      int min = l;
-      int max = -1;
-      int sum = 0;
-      boolean maxFLag = false;
-
-      for( int i = 0; i < k; i++ ) {
+      POSITIONS = new ArrayList<>();
+      for (int i = 0; i < k; i++) {
         int position = in.nextInt();
-
-        if( position > middle ) {
-          if( max < position ) {
-            max = position;
-          }
-          maxFLag = true;
-        } else {
-          if( min > position ) {
-            min = position;
-          }
-          if( max < position ) {
-            max = position;
-          }
-          if( !maxFLag ) {
-            sum += position;
-          }
-        }
+        assert (position > l);
+        POSITIONS.add(position);
       }
 
-      if( maxFLag ) {
+      // sort
+      Collections.sort(POSITIONS);
 
-      } else {
+      // create an empty sticks
+      LinkedList<Integer> sticks = new LinkedList<>();
 
-      }
+      // call the API to retrieve the best answer
+      cutLog(sticks, 0);
 
-
-
+      out.print(LONGEST_STICK + " " + FIRST_CUT_POSITION);
     } catch (Exception e) {
       e.printStackTrace();
     }
