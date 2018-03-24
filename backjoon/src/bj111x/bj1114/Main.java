@@ -30,30 +30,34 @@ public class Main {
     int first;
     int second;
     int stick;
-    int logest;
+    int longest;
 
     veryFirst = sticks.remove();
     first = veryFirst;
     second = veryFirst;
-    logest = veryFirst;
+    longest = veryFirst;
 
     while (!sticks.isEmpty()) {
       second = sticks.remove();
       stick = second - first;
-      if (logest < stick) {
-        logest = stick;
+      if (stick > LONGEST_STICK && LONGEST_STICK != 0) {
+        return;
+      }
+      if (longest < stick) {
+        longest = stick;
       }
       first = second;
     }
     stick = l - second;
-    if (logest < stick) {
-      logest = stick;
+    if (longest < stick) {
+      longest = stick;
     }
 
-    if (logest < LONGEST_STICK || LONGEST_STICK == 0) {
-      LONGEST_STICK = logest;
+    if (longest < LONGEST_STICK || LONGEST_STICK == 0) {
+      LONGEST_STICK = longest;
       FIRST_CUT_POSITION = veryFirst;
     }
+    System.out.println(longest + " " + veryFirst);
   }
 
   public static void cutLog(LinkedList<Integer> sticks, int index) {
@@ -64,19 +68,28 @@ public class Main {
       return;
     }
 
-    int loopingCount = POSITIONS.size() - sticks.size() - (c - 1);
-
-
-    for (int i = 0; i < loopingCount; i++) {
+    while (index < k) {
       LinkedList<Integer> copy = (LinkedList<Integer>) sticks.clone();
-      copy.add(POSITIONS.get(index++));
-      cutLog(copy, index);
+      copy.add(POSITIONS.get(index));
+      if (copy.size() > 1 && index != k) {
+        if (copy.getLast() - copy.get(copy.size() - 2) > LONGEST_STICK && LONGEST_STICK != 0) {
+          return;
+        }
+      } else if (copy.size() == 1 && LONGEST_STICK != 0) {
+        if (copy.getFirst() >= LONGEST_STICK) {
+          return;
+        }
+      } else if (k - index < c - sticks.size()) {
+        return;
+      }
+
+      cutLog(copy, ++index);
     }
   }
 
   public static void main(String[] args) {
     try (Scanner in = new Scanner(System.in);
-        PrintWriter out = new PrintWriter(System.out) ) {
+        PrintWriter out = new PrintWriter(System.out)) {
       l = in.nextInt();
       k = in.nextInt();
       c = in.nextInt();
@@ -101,7 +114,7 @@ public class Main {
       // call the API to retrieve the best answer
       cutLog(sticks, 0);
 
-      out.print(LONGEST_STICK + " " + FIRST_CUT_POSITION);
+      out.println(LONGEST_STICK + " " + FIRST_CUT_POSITION);
     } catch (Exception e) {
       e.printStackTrace();
     }
