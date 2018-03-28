@@ -1,7 +1,10 @@
 package bj111x.bj1114;
 
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by jsong on 20/02/2018.
@@ -11,7 +14,7 @@ import java.util.*;
  * @github https://github.com/jsong00505
  * @linkedin https://www.linkedin.com/in/junesongskorea/
  * @email jsong00505@gmail.com
- * @challenge Slice Logs
+ * @challenge Cut Log
  */
 public class Main {
   // define as a global in the class since I don't want to use this repeatedly for API
@@ -21,70 +24,56 @@ public class Main {
   private static List<Integer> POSITIONS;
 
   // final result
-  private static int LONGEST_STICK = 0;
-  private static int FIRST_CUT_POSITION = 0;
+  private static int LONGEST_CUT;
+  private static int FIRST_CUT_POSITION;
 
-  public static void getBest(LinkedList<Integer> sticks) {
-
-    int veryFirst;
-    int first;
-    int second;
-    int stick;
-    int longest;
-
-    veryFirst = sticks.remove();
-    first = veryFirst;
-    second = veryFirst;
-    longest = veryFirst;
-
-    while (!sticks.isEmpty()) {
-      second = sticks.remove();
-      stick = second - first;
-      if (stick > LONGEST_STICK && LONGEST_STICK != 0) {
-        return;
+  private static boolean canCut(int middle) {
+    int cutLength = 0;
+    int cutCount = 0;
+    for (int i = 1; i <= k + 1; i++) {
+      int diff = POSITIONS.get(i) - POSITIONS.get(i - 1);
+      cutLength += diff;
+      if (cutLength > middle) {
+        cutCount++;
+        cutLength = diff;
+        if (cutLength > middle) {
+          return false;
+        }
       }
-      if (longest < stick) {
-        longest = stick;
-      }
-      first = second;
     }
-    stick = l - second;
-    if (longest < stick) {
-      longest = stick;
-    }
-
-    if (longest < LONGEST_STICK || LONGEST_STICK == 0) {
-      LONGEST_STICK = longest;
-      FIRST_CUT_POSITION = veryFirst;
-    }
-    System.out.println(longest + " " + veryFirst);
+    return cutCount <= c;
   }
 
-  public static void cutLog(LinkedList<Integer> sticks, int index) {
+  private static void setFirstCut() {
+    int longest = LONGEST_CUT;
 
-    // check if the number of cut is over
-    if (sticks.size() == c) {
-      getBest(sticks);
-      return;
+    for (int i = 1; i <= k + 1; i++) {
+      int diff = POSITIONS.get(i) - POSITIONS.get(i - 1);
     }
+  }
 
-    while (index < k) {
-      LinkedList<Integer> copy = (LinkedList<Integer>) sticks.clone();
-      copy.add(POSITIONS.get(index));
-      if (copy.size() > 1 && index != k) {
-        if (copy.getLast() - copy.get(copy.size() - 2) > LONGEST_STICK && LONGEST_STICK != 0) {
-          return;
-        }
-      } else if (copy.size() == 1 && LONGEST_STICK != 0) {
-        if (copy.getFirst() >= LONGEST_STICK) {
-          return;
-        }
-      } else if (k - index < c - sticks.size()) {
-        return;
+  private static void setLessLongestCut(int cutLog) {
+    if (LONGEST_CUT == 0) {
+      LONGEST_CUT = cutLog;
+    }
+    if (LONGEST_CUT > cutLog) {
+      LONGEST_CUT = cutLog;
+    }
+  }
+
+  private static void cutLog() {
+    int left = 0;
+    int right = POSITIONS.get(POSITIONS.size() - 1);
+    while (left <= right) {
+      int middle = (left + right) / 2;
+      if (canCut(middle)) {
+        right = middle - 1;
+        setLessLongestCut(middle);
+      } else {
+        left = middle + 1;
       }
-
-      cutLog(copy, ++index);
     }
+    setFirstCut();
   }
 
   public static void main(String[] args) {
@@ -98,23 +87,25 @@ public class Main {
       assert (k > 0 && k < 10000);
       assert (c > 0 && c < 10000);
 
+      // set the positions from 0 to l
       POSITIONS = new ArrayList<>();
-      for (int i = 0; i < k; i++) {
+      POSITIONS.add(0);
+      for (int i = 1; i <= k; i++) {
         int position = in.nextInt();
         assert (position > l);
         POSITIONS.add(position);
       }
+      POSITIONS.add(l);
 
+      LONGEST_CUT = 0;
+      FIRST_CUT_POSITION = 0;
       // sort
       Collections.sort(POSITIONS);
 
-      // create an empty sticks
-      LinkedList<Integer> sticks = new LinkedList<>();
-
       // call the API to retrieve the best answer
-      cutLog(sticks, 0);
+      cutLog();
 
-      out.println(LONGEST_STICK + " " + FIRST_CUT_POSITION);
+      out.println(LONGEST_CUT + " " + FIRST_CUT_POSITION);
     } catch (Exception e) {
       e.printStackTrace();
     }
