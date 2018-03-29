@@ -3,13 +3,7 @@ package no005.longest.palindrom.substring;
 /**
  * Created by jsong on 28/03/2018.
  *
- * @hackerrank https://www.hackerrank.com/jsong00505
- * @backjoon https://www.acmicpc.net/user/jsong00505
- * @github https://github.com/jsong00505
- * @linkedin https://www.linkedin.com/in/junesongskorea/
- * @leetcode https://leetcode.com/jsong00505/
- * @email jsong00505@gmail.com
- * @challenge Longest Palindrome Substring
+ * Longest Palindrome Substring
  */
 public class Solution {
 
