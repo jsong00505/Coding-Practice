@@ -37,7 +37,7 @@ public class Solution {
     int length = s.length();
     for (int i = length - 1; i > 0; i--) {
       for (int j = 0; j <= length - i - 1; j++) {
-        if (isPalindrome(s, j, i + j)) {
+        if (isPalindrome(s, j, j + i)) {
           return s.substring(j, j + i + 1);
         }
       }
