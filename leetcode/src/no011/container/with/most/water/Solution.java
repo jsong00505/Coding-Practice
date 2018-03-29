@@ -1,88 +1,43 @@
 package no011.container.with.most.water;
 
-import java.util.HashMap;
-
 public class Solution {
 
-  private static class Range {
-
-    int min;
-    int max;
-
-    Range(int dot) {
-      min = dot;
-      max = dot;
-    }
-
-    void setRange(int dot) {
-
-      if (max < dot) {
-        max = dot;
-      }
-      if (min > dot) {
-        min = dot;
-      }
-    }
-  }
-
+  /**
+   * Retrieve max area by supplied integer array of height.
+   *
+   * Compare the very left point to the very right point at each moment and save the lower height to
+   * retrieve area between left and right. Move the bigger side point to the middle point side of
+   * both and set a bigger value as a current max area between the existed max area and the saved
+   * area.
+   *
+   * @param height The array of height
+   * @return A max area
+   */
   public static int maxArea(int[] height) {
 
-    int longest = height.length;
-    int highest = 0;
     int maxArea = 0;
-
-    HashMap<Integer, Range> map = new HashMap<>();
-    for (int i = 0; i < longest; i++) {
-      if(highest < height[i]) {
-        highest = height[i];
-      }
-      if (map.containsKey(height[i])) {
-        Range range = map.get(height[i]);
-        range.setRange(i);
+    int left = 0;
+    int right = height.length - 1;
+    while (left < right) {
+      int lowerHeight;
+      int length = right - left;
+      if (height[left] < height[right]) {
+        lowerHeight = height[left];
+        left++;
       } else {
-        Range range = new Range(i);
-        map.put(height[i], range);
+        lowerHeight = height[right];
+        right--;
       }
-    }
-
-    for (int i = longest; i > 0; i--) {
-      int min = 0;
-      int max = 0;
-      boolean flag = true;
-      for(int j = highest; j > 0; j--) {
-        if( i * j < maxArea ) {
-          break;
-        }
-        if(map.containsKey(j)) {
-          Range range = map.get(j);
-          if(min == 0 && max == 0 && flag) {
-            min = range.min;
-            max = range.max;
-            flag = false;
-          } else {
-            if(range.min < min) {
-              min = range.min;
-            }
-            if(range.max > max) {
-              max = range.max;
-            }
-          }
-
-          int length = max - min;
-          int area = j * length;
-          if(area > maxArea) {
-            maxArea = area;
-          }
-        }
-      }
+      int area = lowerHeight * length;
+      maxArea = maxArea < area ? area : maxArea;
     }
 
     return maxArea;
   }
 
   public static void main(String[] args) {
-    //System.out.println(maxArea(new int[]{1,2,3,4,1}));
-    System.out.println(maxArea(new int[]{2,1}));
-    //System.out.println(maxArea(new int[]{1,2,3,4,1,5}));
+    System.out.println(4 == maxArea(new int[]{1, 2, 3, 4, 1}));
+    System.out.println(1 == maxArea(new int[]{2, 1}));
+    System.out.println(9 == maxArea(new int[]{1, 2, 3, 4, 1, 5}));
   }
 }
