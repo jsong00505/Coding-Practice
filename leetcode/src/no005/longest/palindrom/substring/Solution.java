@@ -19,7 +19,7 @@ public class Solution {
    * @param s A string
    * @param start A start index
    * @param end A end index
-   * @return {@link true} If it is a plindrome string of {@link false} if not. If the length is 1 it
+   * @return {@link true} If it is a palindrome string or {@link false} if not. If the length is 1 it
    *     treats as like a palindrome string.
    */
   public static boolean isPalindrome(String s, int start, int end) {
