@@ -17,6 +17,7 @@ import java.util.Scanner;
  * @challenge Cut Log
  */
 public class Main {
+
   // define as a global in the class since I don't want to use this repeatedly for API
   private static int l;
   private static int k;
@@ -27,6 +28,12 @@ public class Main {
   private static int LONGEST_CUT;
   private static int FIRST_CUT_POSITION;
 
+  /**
+   * Validate if can cut.
+   *
+   * @param middle A middle of length
+   * @return {@link true} if possible or {@link false} if not.
+   */
   private static boolean canCut(int middle) {
     int cutLength = 0;
     int cutCount = 0;
@@ -44,14 +51,32 @@ public class Main {
     return cutCount <= c;
   }
 
+  /**
+   * Find the very first cut position and then set the value.
+   */
   private static void setFirstCut() {
-    int longest = LONGEST_CUT;
-
-    for (int i = 1; i <= k + 1; i++) {
-      int diff = POSITIONS.get(i) - POSITIONS.get(i - 1);
+    int count = 0;
+    int sum = 0;
+    for (int i = k; i >= 0; i--) {
+      int diff = POSITIONS.get(i + 1) - POSITIONS.get(i);
+      sum += diff;
+      if (sum > LONGEST_CUT) {
+        count++;
+        FIRST_CUT_POSITION = POSITIONS.get(i + 1);
+        sum = diff;
+      }
+    }
+    // if count is over c the very first cut position can be the first position in the POSITION
+    if (count < c) {
+      FIRST_CUT_POSITION = POSITIONS.get(1);
     }
   }
 
+  /**
+   * Validate if the supplied length is the less longest length and then set.
+   *
+   * @param cutLog the longest value from the {@code canCut} processing
+   */
   private static void setLessLongestCut(int cutLog) {
     if (LONGEST_CUT == 0) {
       LONGEST_CUT = cutLog;
@@ -98,7 +123,7 @@ public class Main {
       POSITIONS.add(l);
 
       LONGEST_CUT = 0;
-      FIRST_CUT_POSITION = 0;
+      FIRST_CUT_POSITION = l;
       // sort
       Collections.sort(POSITIONS);
 
