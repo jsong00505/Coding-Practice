@@ -1,81 +1,51 @@
 package bj301x.bj3015;
 
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  * Created by jsong on 19/04/2017.
  *
- * @hackerrank https://www.hackerrank.com/jsong00505
- * @backjoon https://www.acmicpc.net/user/jsong00505
- * @github https://github.com/jsong00505
- * @linkedin https://www.linkedin.com/in/junesongskorea/
- * @email jsong00505@gmail.com
- * @challenge Reunion Oasis
+ * Reunion Oasis
  */
 public class Main {
-  /**
-   * debugging method
-   *
-   * @param array
-   */
-  static void printArray(int[] array) {
-    System.out.println("==========START=========");
 
-    for (int ele : array) {
-      System.out.print(ele + " ");
-    }
-    System.out.println();
-    System.out.println("===========END==========");
-  }
+  static int getNumberOfSets(int[] heights) {
 
-  /**
-   * @param n
-   * @param heights
-   * @return a number of sets
-   * @way-of-solve full-search
-   */
-  static int getNumberOfSets(int n, int[] heights) {
-    // count a number of sets
     int count = 0;
-
-    // temporary value for highest number in the given sub array
-    int highest;
-
-    // iterating
-    for (int i = 0; i < n - 1; i++) {
-      // set the highest number the next of current number
-      highest = heights[i + 1];
-
-      // the current number and next one can always see each
+    while (heights[count + 1] > heights[count]) {
       count++;
-
-      for (int j = i + 2; j < n; j++) {
-        // if a current number is not higher than highest, just continue to count
-        // but if the original one is not, just stop the iteration
-        if (highest > heights[i]) {
-          break;
-        }
-
-        if (highest > heights[j]) {
-          continue;
-        }
-
-        // reset the highest value
-        if (highest < heights[j]) {
-          highest = heights[j];
-        }
-
-        count++;
+      if (count >= heights.length - 1) {
+        break;
       }
     }
 
+    int diff = heights.length - count - 1;
+    if (diff < 1) {
+      return count;
+    } else if (diff == 1) {
+      return count + 1;
+    }
+
+    int index = count;
+    int prior = heights[index + 1];
+    for (int i = count + 2; i < heights.length; i++) {
+      int current = heights[i];
+      if (current < prior) {
+        count += i - index;
+        count += getNumberOfSets(Arrays.copyOfRange(heights, index + 1, i - index + count + 1));
+        index = i;
+      }
+      prior = current;
+    }
+    count += heights.length - 1 - index;
     return count;
   }
 
   public static void main(String[] args) {
     try (Scanner in = new Scanner(System.in);
-         PrintWriter out = new PrintWriter(System.out);) {
+        PrintWriter out = new PrintWriter(System.out)) {
       int n = in.nextInt();
 
       assert (n >= 1 && n <= 500000);
@@ -85,7 +55,7 @@ public class Main {
         heights[i] = in.nextInt();
       }
 
-      out.println(getNumberOfSets(n, heights));
+      out.println(getNumberOfSets(heights));
     }
   }
 }
