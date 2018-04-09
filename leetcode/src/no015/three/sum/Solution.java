@@ -2,6 +2,7 @@ package no015.three.sum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,7 +37,10 @@ public class Solution {
         if (sum + nums[i] == 0) {
           List<Integer> candidate = new ArrayList<>(key);
           candidate.add(nums[i]);
-          result.add(candidate);
+          Collections.sort(candidate);
+          if (!result.contains(candidate)) {
+            result.add(candidate);
+          }
           break;
         }
       }
