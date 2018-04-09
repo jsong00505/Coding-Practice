@@ -34,8 +34,10 @@ public class Solution {
           continue;
         }
         if (sum + nums[i] == 0) {
-          key.add(nums[i]);
-          result.add(key);
+          List<Integer> candidate = new ArrayList<>(key);
+          candidate.add(nums[i]);
+          result.add(candidate);
+          break;
         }
       }
     }
