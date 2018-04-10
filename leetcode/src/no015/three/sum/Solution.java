@@ -15,7 +15,7 @@ public class Solution {
 
     HashMap<List<Integer>, List<Integer>> map = new HashMap<>();
     for (int i = 0; i < length - 1; i++) {
-      for (int j = i; j < length; j++) {
+      for (int j = i+1; j < length; j++) {
         List<Integer> twoNumbs = new ArrayList<>();
         twoNumbs.add(nums[i]);
         twoNumbs.add(nums[j]);
@@ -50,6 +50,7 @@ public class Solution {
   }
 
   public static void main(String[] args) {
-    threeSum(new int[]{1, 1, 1, 1, 0, -1});
+    System.out.println(threeSum(new int[]{1, 1, 1, 1, 0, -1}));
+    System.out.println(threeSum(new int[]{1,2,-2,-1}));
   }
 }
