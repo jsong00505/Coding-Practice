@@ -13,35 +13,24 @@ public class Solution {
     int length = nums.length;
     Arrays.sort(nums);
 
-    HashMap<List<Integer>, List<Integer>> map = new HashMap<>();
+    HashMap<Integer, List<Integer>> map = new HashMap<>();
+    List<List<Integer>> result = new ArrayList<>();
     for (int i = 0; i < length - 1; i++) {
       for (int j = i + 1; j < length; j++) {
-        List<Integer> twoNumbs = new ArrayList<>();
-        twoNumbs.add(nums[i]);
-        twoNumbs.add(nums[j]);
-        List<Integer> indices = new ArrayList<>();
-        indices.add(i);
-        indices.add(j);
-        map.put(twoNumbs, indices);
-      }
-    }
-
-    List<List<Integer>> result = new ArrayList<>();
-    for (List<Integer> key : map.keySet()) {
-      List<Integer> indices = map.get(key);
-      int sum = key.get(0) + key.get(1);
-      for (int i = 0; i < length; i++) {
-        if (i == indices.get(0) || i == indices.get(1)) {
-          continue;
-        }
-        if (sum + nums[i] == 0) {
-          List<Integer> candidate = new ArrayList<>(key);
-          candidate.add(nums[i]);
+        List<Integer> twoNumbs;
+        if(map.containsKey(nums[j])) {
+          List<Integer> candidate =new ArrayList<>(map.get(nums[j]));
+          candidate.add(nums[j]);
           Collections.sort(candidate);
           if (!result.contains(candidate)) {
             result.add(candidate);
           }
-          break;
+        } else {
+          int complement = (-1) * (nums[i] + nums[j]);
+          twoNumbs = new ArrayList<>();
+          twoNumbs.add(nums[i]);
+          twoNumbs.add(nums[j]);
+          map.put(complement, twoNumbs);
         }
       }
     }
@@ -50,7 +39,7 @@ public class Solution {
   }
 
   public static void main(String[] args) {
-    System.out.println(threeSum(new int[]{1, 1, 1, 1, 0, -1}));
-    System.out.println(threeSum(new int[]{1, 2, -2, -1}));
+    //System.out.println(threeSum(new int[]{1, 1, 1, 1, 0, -1})); // [[-1, 0, 1]]
+    System.out.println(threeSum(new int[]{1, 2, -2, -1}));      // []
   }
 }
