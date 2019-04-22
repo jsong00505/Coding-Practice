@@ -1,7 +1,7 @@
 # Backjoon-Study
 
 [Backjoon](https://www.acmicpc.net) is the one of Algorithm Online Judgement Site in Korea. 
-Difficulty is not bad, and the site support a lot of programming languages. Also, he provides online courses for strategy solving algorithms 
+Difficulty is not bad, and the site support a lot of programming languages. Also, he provides online courses for strategy solving algorithms.
 
 [(24/29 solved)](https://www.acmicpc.net/user/jsong00505)
 
